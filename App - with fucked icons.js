@@ -8,7 +8,6 @@ import ContactScreen from "./screens/ContactScreen";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 
-
 const Tab = createBottomTabNavigator();
 
 export default function App() {
@@ -19,15 +18,13 @@ export default function App() {
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
 
-            if (route.name === 'Home') {
+            if (route.name === 'Events') {
               iconName = focused
                 ? 'ios-information-circle'
                 : 'ios-information-circle-outline';
-            } else if (route.name === 'Events') {
+            } else if (route.name === 'Settings') {
               iconName = focused ? 'ios-list-box' : 'ios-list';
             }
-
-
 
             // You can return any component that you like here!
             return <Ionicons name={iconName} size={size} color={color} />;
@@ -39,16 +36,14 @@ export default function App() {
           
         }}
       >
-        <Tab.Screen name="Home" component={HomeScreen}/>
-
-        <Tab.Screen name="Events" component={EventsScreen} />
-
-        <Tab.Screen name="Contact" component={ContactScreen} options={{ 
-          tabBarLabel: 'Contacts',
+        <Tab.Screen name="Home" component={HomeScreen} options={{ 
+          tabBarLabel: 'Hggome', LabelPosition: 'below-icon',
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="ios-call" color={color} size={24} />
+            <MaterialCommunityIcons name="home" color={color} size={24} />
           ),
         }} />
+        <Tab.Screen name="Events" component={EventsScreen} />
+        <Tab.Screen name="Contact" component={ContactScreen} />
       </Tab.Navigator>
     </NavigationContainer>
   );
